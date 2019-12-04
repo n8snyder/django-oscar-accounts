@@ -34,6 +34,7 @@ class AccountType(MP_Node):
     name = models.CharField(max_length=128)
 
     class Meta:
+        app_label = "oscar_accounts"
         abstract = True
 
     def __str__(self):
@@ -124,6 +125,7 @@ class Account(models.Model):
     expired = ExpiredAccountManager()
 
     class Meta:
+        app_label = "oscar_accounts"
         abstract = True
 
     def __str__(self):
@@ -383,6 +385,7 @@ class Transfer(models.Model):
         return self.reference
 
     class Meta:
+        app_label = "oscar_accounts"
         abstract = True
         ordering = ("-date_created",)
 
@@ -467,6 +470,7 @@ class Transaction(models.Model):
         return u"Ref: %s, amount: %.2f" % (self.transfer.reference, self.amount)
 
     class Meta:
+        app_label = "oscar_accounts"
         unique_together = ("transfer", "account")
         abstract = True
 
@@ -492,6 +496,7 @@ class IPAddressRecord(models.Model):
     COOLING_OFF_PERIOD = 5 * 60
 
     class Meta:
+        app_label = "oscar_accounts"
         abstract = True
         verbose_name = _("IP address record")
         verbose_name_plural = _("IP address records")
