@@ -280,7 +280,6 @@ class PostingManager(models.Manager):
         source,
         destination,
         amount,
-        staff=None,
         parent=None,
         user=None,
         merchant_reference=None,
@@ -294,7 +293,6 @@ class PostingManager(models.Manager):
                 source=source,
                 destination=destination,
                 amount=amount,
-                staff=staff,
                 parent=parent,
                 user=user,
                 merchant_reference=merchant_reference,
@@ -369,9 +367,6 @@ class Transfer(models.Model):
     # also record some audit information.
     user = models.ForeignKey(
         AUTH_USER_MODEL, models.SET_NULL, related_name="transfers", null=True
-    )
-    staff = models.ForeignKey(
-        AUTH_USER_MODEL, models.SET_NULL, related_name="auth_transfers", null=True
     )
     username = models.CharField(max_length=128)
 
